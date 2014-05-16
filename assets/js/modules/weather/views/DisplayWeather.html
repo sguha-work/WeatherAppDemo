@@ -1,0 +1,35 @@
+<div class="cityWeather">
+{{#error}}
+	<p>Error occured to fetch data for the city <b>{{cityName}}</b></p>
+{{/error}}
+{{^error}}
+	<table class="tableStyle">
+		<tr>
+			<th>{{name}}</th>
+		</tr>
+			{{#list}}
+				<tr>
+					<td>Date</td>
+					<td>{{dt}}</td>
+					<td>Temp. Min</td>
+					<td>{{temp.min}}</td>
+					<td>Temp. Max</td>
+					<td>{{temp.max}}</td>
+					<td>Wind Speed</td>
+					<td>{{speed}}</td>
+					<td>Humidity</td>
+					<td>{{humidity}}</td>
+					<td>Overview</td>
+					<td>{{weather[0].main}}</td>
+					<td>Sky</td>
+					<td>{{weather[0].description}}</td>
+				</tr>
+			{{/list}}
+			{{^list}}
+				<tr>
+					<td>No Data found. May be city name not availeble in database</td>
+				</tr>
+			{{/list}}		
+	</table>
+</div>
+{{/error}}
