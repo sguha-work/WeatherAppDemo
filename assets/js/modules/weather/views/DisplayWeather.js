@@ -59,47 +59,36 @@ WA.views.DisplayWeather = Backbone.View.extend({
 		rendarableData.name = this.cityNameArray[this.index];
 		//Converting all timestamp to readable date time string and temparature from kelvin to celcius farenhite
 		for(var index in rendarableData.list) {
-			rendarableData.list[index].dt = WA.common.convertTimeStampToDate(rendarableData.list[index].dt);
+			rendarableData.list[index].dt       = WA.common.convertTimeStampToDate(rendarableData.list[index].dt);
 			rendarableData.list[index].temp.min = WA.common.convertKelvinToCelcius(rendarableData.list[index].temp.min) + "(" + WA.common.convertKelvinToFahrenheit(rendarableData.list[index].temp.min) + ")";
 			rendarableData.list[index].temp.max = WA.common.convertKelvinToCelcius(rendarableData.list[index].temp.max) + "(" + WA.common.convertKelvinToFahrenheit(rendarableData.list[index].temp.max) + ")";
+			rendarableData.list[index].overview = rendarableData.list[index].weather[0].main;
+			rendarableData.list[index].sky = rendarableData.list[index].weather[0].description;
 		}
 		//Finished converting all timestamp to readable date time string and temparature from kelvin to celcius farenhite
-		//if(this.index == 0) {
-			if(typeof WA.templates.DisplayWeather == "undefined") {
-				var selfObject = this;
-				$.ajax({
-					url     : "assets/js/modules/weather/views/DisplayWeather.html",
-					success : function(data) {
-						selfObject.template = data;
-						WA.templates.DisplayWeather = data;
-						selfObject.render(rendarableData);			
-						if(rendarableData.cod!="404") {
-							selfObject.createHideShow($("div.cityWeather").last());
-						}
-						selfObject.increaseIndex();
-						
+		if(typeof WA.templates.DisplayWeather == "undefined") {
+			var selfObject = this;
+			$.ajax({
+				url     : "assets/js/modules/weather/views/DisplayWeather.html",
+				success : function(data) {
+					selfObject.template = data;
+					WA.templates.DisplayWeather = data;
+					selfObject.render(rendarableData);			
+					if(rendarableData.cod!="404") {
+						selfObject.createHideShow($("div.cityWeather").last());
 					}
-				});
-			}
-			else {
-				this.template = WA.templates.DisplayWeather;
-				this.render(rendarableData);
-				if(rendarableData.cod!="404") {
-					this.createHideShow($("div.cityWeather").last());
+					selfObject.increaseIndex();
 				}
-				this.increaseIndex();
+			});
+		}
+		else {
+			this.template = WA.templates.DisplayWeather;
+			this.render(rendarableData);
+			if(rendarableData.cod!="404") {
+				this.createHideShow($("div.cityWeather").last());
 			}
-			
-		//}
-		// else {
-		// 	this.$el.append(Mustache.render(this.template, rendarableData));
-		// 	if(rendarableData.cod!="404") {
-		// 		this.createHideShow($("div.cityWeather").last());
-		// 	}
-		// 	this.increaseIndex();
-		// }
-		
-		
+			this.increaseIndex();
+		}
 	},
 	increaseIndex : function() {
 		this.index += 1;
