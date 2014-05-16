@@ -3,7 +3,7 @@ WA.common.convertTimeStampToDate = function(timeStamp) {
     var weekDaysNameArray = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     timeStamp = timeStamp*1000;
     var date = new Date(timeStamp);
-	var dateString = date.getDate() + " " + monthNameArray[date.getMonth()] + " " + date.getFullYear() + "," + weekDaysNameArray[date.getDay()] + " " + date.getHours() + ":" + date.getMinutes();
+	var dateString = date.getDate() + " " + monthNameArray[date.getMonth()] + " " + date.getFullYear() + "," + weekDaysNameArray[date.getDay()]; //+ " " + date.getHours() + ":" + date.getMinutes();
 	return dateString;
 };
 

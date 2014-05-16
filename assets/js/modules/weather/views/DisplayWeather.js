@@ -23,7 +23,12 @@ WA.views.DisplayWeather = Backbone.View.extend({
 		this.listenTo(this.model, "DATA_FETCH_ERROR", this.DataFetchError);
 	},
 	getWeather : function(cityName) {
-		this.model.getWeatherDetail(cityName);
+		if($.trim(cityName)!="") {
+			this.model.getWeatherDetail(cityName);
+		}
+		else {
+			this.increaseIndex();
+		}
 	},
 	DataFetchError : function() {
 		var errorObject = {cityName : this.cityNameArray[this.index],error : true};
