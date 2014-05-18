@@ -1,3 +1,8 @@
+/** 
+*   This is the common file which holds all the common 
+*   function which are going to be used throughout the application
+*/
+"use strict";
 WA.common.convertTimeStampToDate = function(timeStamp) {
     var monthNameArray    = ['January', 'February', 'March', 'April', 'May', 'Jun', 'July', 'August', 'September', 'October', 'November', 'December'];
     var weekDaysNameArray = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
