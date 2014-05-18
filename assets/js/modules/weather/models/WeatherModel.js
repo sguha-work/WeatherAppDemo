@@ -6,10 +6,10 @@ WA.models.WeatherModel = Backbone.Model.extend({
 	getWeatherDetail : function(cityName) {
 		cityName = $.trim(cityName);
 		var selfObject = this;
-		this.fetch({//q=Delhi,Mumbai&cnt=14&APPID=b35e5e51128992747a9393ab8ba53b8b",
+		this.fetch({
 			url : this.urlBase + "q=" + cityName + "&cnt=" + this.count +"&APPID=" + this.apiKey,
 			crossDomain : true,
-			timeout     : 5000,
+			timeout     : 10000,
 			success : function(modelInstance, rawResult) {
 				selfObject.clear("WeatherData");
 				selfObject.set("WeatherData",rawResult);

@@ -22,6 +22,7 @@ WA.views.WeatherForm = Backbone.View.extend({
 		}
 		else {
 			this.template = WA.templates.WeatherForm;
+			this.loadTemplate();
 		}	
 	},
 	loadTemplate : function() {
@@ -45,5 +46,6 @@ WA.views.WeatherForm = Backbone.View.extend({
 		if(event.keyCode == 13) {
 			this.navigateToGetWeather();
 		}
-	}
+	},
+	
 });
