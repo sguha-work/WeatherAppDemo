@@ -18,6 +18,7 @@ To reduce code complexity every views, models, templates are separatedin modules
 
 Mustache js is used for short and simple logicless templating.
 
+"use strict" is used to keep the program's keyword and syntax strict
 
 The application will receive multiple city as a comma separated value inside a input box, and after entering the city name(s) whenever user press enter or click on the button the details will be loaded. Initially every city's present day weather details will be shown, to see next 14 days weather user have to click on the expand button on corresponding city.
 
